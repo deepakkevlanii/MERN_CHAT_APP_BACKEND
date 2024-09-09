@@ -18,7 +18,7 @@ connectDB();
 const corsOptions = {
   origin:
     process.env.NODE_ENV === "production"
-      ? "https://hello.com"
+      ? "https://talk-to-everyone.netlify.app/"
       : "http://localhost:5173",
   credentials: true,
   optionsSuccessStatus: 200,

@@ -43,10 +43,10 @@ const server = app.listen(PORT, () =>
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin:
-      process.env.NODE_ENV === "production"
-        ? "https://talk-to-everyone.netlify.app/"
-        : "http://localhost:5173", // Ensure this is correct for your development environment
+    origin:"https://talk-to-everyone.netlify.app/"
+      // process.env.NODE_ENV === "production"
+      //   ? "https://talk-to-everyone.netlify.app/"
+      //   : "http://localhost:5173", // Ensure this is correct for your development environment
     methods: ["GET", "POST"],
     credentials: true,
   },

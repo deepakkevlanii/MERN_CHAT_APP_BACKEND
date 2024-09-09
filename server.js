@@ -45,7 +45,7 @@ const io = require("socket.io")(server, {
   cors: {
     origin:
       process.env.NODE_ENV === "production"
-        ? "https://your-production-url.com"
+        ? "https://talk-to-everyone.netlify.app/"
         : "http://localhost:5173", // Ensure this is correct for your development environment
     methods: ["GET", "POST"],
     credentials: true,

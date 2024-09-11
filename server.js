@@ -15,10 +15,7 @@ dotenv.config();
 connectDB();
 
 // Set CORS dynamically based on environment
-const allowedOrigin =
-  process.env.NODE_ENV === "production"
-    ? "https://talk-to-everyone.netlify.app"
-    : "http://localhost:5173";
+const allowedOrigin =['http://localhost:5173', 'https://talk-to-everyone.netlify.app'];
 
 const corsOptions = {
   origin: allowedOrigin,

@@ -15,11 +15,13 @@ dotenv.config();
 connectDB();
 
 // Set CORS dynamically based on environment
+const allowedOrigin =
+  process.env.NODE_ENV === "production"
+    ? "https://talk-to-everyone.netlify.app"
+    : "http://localhost:5173";
+
 const corsOptions = {
-  origin:
-    process.env.NODE_ENV === "production"
-      ? "https://talk-to-everyone.netlify.app/"
-      : "http://localhost:5173",
+  origin: allowedOrigin,
   credentials: true,
   optionsSuccessStatus: 200,
 };
@@ -43,14 +45,12 @@ const server = app.listen(PORT, () =>
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin:"https://talk-to-everyone.netlify.app/"
-      // process.env.NODE_ENV === "production"
-      //   ? "https://talk-to-everyone.netlify.app/"
-      //   : "http://localhost:5173", // Ensure this is correct for your development environment
+    origin: allowedOrigin,
     methods: ["GET", "POST"],
     credentials: true,
   },
 });
+
 
 io.on("connection", (socket) => {
   console.log("Connected to socket.io");
